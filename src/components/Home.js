@@ -9,22 +9,10 @@ export default function Home(){
         <div>
          
             <h1>דף הנחיות לטופס</h1>
-           {useCtx.firstName&&useCtx.lastName}? <h2>Hello {useCtx.firstName} {useCtx.lastName} </h2>:<h2>Hello</h2>
-            <p>gfhgjkl;kjhgvcbhjhgfdghjhgfdfghjhgfd</p>
-            <p>gfhgjkl;kjhgvcbhjhgfdghjhgfdfghjhgfd</p>
-            <p>gfhgjkl;kjhgvcbhjhgfdghjhgfdfghjhgfd</p>
-            <p>gfhgjkl;kjhgvcbhjhgfdghjhgfdfghjhgfd</p>
-            <p>gfhgjkl;kjhgvcbhjhgfdghjhgfdfghjhgfd</p>
-            <p>gfhgjkl;kjhgvcbhjhgfdghjhgfdfghjhgfd</p>
-            <p>gfhgjkl;kjhgvcbhjhgfdghjhgfdfghjhgfd</p>
-            <p>gfhgjkl;kjhgvcbhjhgfdghjhgfdfghjhgfd</p>
-            <p>gfhgjkl;kjhgvcbhjhgfdghjhgfdfghjhgfd</p>
-            <p>gfhgjkl;kjhgvcbhjhgfdghjhgfdfghjhgfd</p>
-            <p>gfhgjkl;kjhgvcbhjhgfdghjhgfdfghjhgfd</p>
-            <p>gfhgjkl;kjhgvcbhjhgfdghjhgfdfghjhgfd</p>
-            <p>gfhgjkl;kjhgvcbhjhgfdghjhgfdfghjhgfd</p>
-            <p>gfhgjkl;kjhgvcbhjhgfdghjhgfdfghjhgfd</p>
-            <p>gfhgjkl;kjhgvcbhjhgfdghjhgfdfghjhgfd</p>
+     <h2>Hello {useCtx.firstName} {useCtx.lastName} </h2>
+    <p> !!כל השדות הינם חובה*</p>
+    <p>בלחיצה על כפתור חזרה לוטפס תוחזרו למילוי הטופס</p>
+    <p>בהצלחה!</p>
             <button onClick={()=>{navigate(`/`)}}>back to form</button>
 
 
