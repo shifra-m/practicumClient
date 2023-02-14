@@ -47,13 +47,14 @@ export default function ChildForm(props) {
     <div>
       <Form.Group className="form-group" controlId="formBasicPassword">
         <Form.Label>FIRST NAME</Form.Label>
-        <Form.Control name="firstName" required minLength={2} {...register("firstName", { required: true })} placeholder="First name" onChange={(e) => (addChildren('firstName', e.target.value, props.index))} />
+        <Form.Control name="firstName" required minLength={2} {...register("firstName", { required: true })} placeholder="First name" onChange={(e) => (addChildren('firstName', e.target.value, props.index), userCtx.setFirstName(e.target.value))} defaultValue={userCtx.firstName}/>
         {errors.firstName && <p>required</p>}
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>TZ</Form.Label>
-        <Form.Control type="text" name="tz" required minLength={2} {...register("tz", { required: true, minLength: 2 })} placeholder="TZ" onInput={(e) => userCtx.setIdentity(e.target.value)} defaultValue={userCtx.identity} />
+        <Form.Control type="text" name="tz" required minLength={2} {...register("tz", { required: true, minLength: 2 })} placeholder="TZ" onChange={(e) => (addChildren('tz', e.target.value, props.index), userCtx.setTz(e.target.value))} defaultValue={userCtx.tz } 
+             />
         {errors.tz}
       </Form.Group>
 
@@ -61,7 +62,7 @@ export default function ChildForm(props) {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>DATE OF BIRTH</Form.Label>
-        <Form.Control {...register("dateOfBirth", { required: true })} required type="date" placeholder="date of bitrh" onInput={(e) => userCtx.setBirthday(e.target.value)} defaultValue={userCtx.birthday} />
+        <Form.Control {...register("dateOfBirth", { required: true })} required type="date" placeholder="date of bitrh" onChange={(e) => (addChildren('birthday', e.target.value, props.index), userCtx.setBirthday(e.target.value))} defaultValue={userCtx.birthday} />
       </Form.Group>
 
 

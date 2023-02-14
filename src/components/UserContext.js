@@ -10,7 +10,8 @@ export default function UserContext(props){
     const[gender,setgender]=useState('')
     const[numOfChildren,setNumOfChildren]=useState(0)
     const[ChildForm,setChildForm]=useState([])
-    // const[ChildArr,setChildArr]=useState([])
+    const [child, setChild] = useState();
+
 
     return(
         <userContext.Provider value={{
@@ -23,7 +24,7 @@ export default function UserContext(props){
             gender,setgender,
             numOfChildren,setNumOfChildren,
             ChildForm,setChildForm,
-            // ChildArr,setChildArr
+           child,setChild
         }}>
            {props.children}
         </userContext.Provider>
