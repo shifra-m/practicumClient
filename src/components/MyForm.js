@@ -66,9 +66,9 @@ export default function MyForm() {
   return (
     <>
       {/* console.log({userCtx}) */}
-
+<div style={{maxWidth:"20%",fontSize:"50%",margin:"50px" ,textAlign:"center"}}>
       {userCtx && <form className="form-group" onSubmit={handleSubmit(console.log)}>
-        <Form.Group className="form-group" controlId="formBasicPassword">
+        <Form.Group className="form-group" controlId="formBasicPassword" >
           <Form.Label>FIRST NAME</Form.Label>
           <Form.Control name="firstName" required minLength={2} {...register("firstName", { required: true })} placeholder="First name" onInput={(e) => { userCtx.setFirstName(e.target.value) }} defaultValue={userCtx.firstName} />
           {errors.firstName && <p>required</p>}
@@ -121,17 +121,16 @@ export default function MyForm() {
             onChange={(e) => { addChild(e.target.value)
             userCtx.setNumOfChildren(e.target.value) }} defaultValue={userCtx.numOfChildren}/>
           {userCtx.child}
-          {/* , userCtx.setNumOfChildren(e.target.value)}} defaultValue={userCtx.numOfChildren} */}
         </div>
-        {isComplete&&navigate(`/DwonLoadExcel`)}
+        
         <Button variant="primary" type="submit" onClick={addUser} >
           Submit
         </Button>
         <button onClick={() => { navigate(`/Home`) }}>HOME</button>
        
+     < button onClick={()=>{navigate(`/Send`)}}>ToSave and dwonloadToExcel</button>
 
-      </form>}
-     < button onClick={()=>{navigate(`/Send`)}}>duonloadToExcel</button>
+      </form>}</div>
     </>
   );
 }
