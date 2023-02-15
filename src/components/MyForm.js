@@ -31,38 +31,88 @@ export default function MyForm() {
     if (userCtx)
       console.log(userCtx.firstName)
   }, [])
-  const addUser = () => {
+  // const addUsers = () => {
 
-    let id = 0;
-    let objUser = {
-      Tz: userCtx.tz,
-      FirstName: userCtx.firstName,
-      LastName: userCtx.lastName,
-      DateOfBirth: userCtx.birthday,
+  //   let id = 0;
+    // let objUser = {
+    //   Tz: userCtx.tz,
+    //   FirstName: userCtx.firstName,
+    //   LastName: userCtx.lastName,
+    //   DateOfBirth: userCtx.birthday,
 
-      Gender: Number(userCtx.gender),
-      HMO: Number(userCtx.HMO)
-    }
-    console.log(objUser)
-    axios.post("https://localhost:44381/api/User", objUser).then(res => {
-      console.log(res.data);
-      setIsComplete(true)
-    }
-    ).catch(e => {
-      console.log(e)
-    })
-    axios.get("https://localhost:44381/api/User").then(
-      (res) => {
-        id = res.data[res.data.length - 1].id;
-        console.log(res)
-      })
-      userCtx.child.map((child, key) => {
-         axios.post("https://localhost:44381/api/Child").then(res=>
-          console.log(res.data))
-       }
-      )
-      .catch((e) => { console.log('eroer', e) })
+    //   Gender: Number(userCtx.gender),
+    //   HMO: Number(userCtx.HMO)
+    // }
+    // console.log(objUser)
+    const addUser = () => {
+
+      let id=0;
+          let eGender = 0;
+              let eHmo = 0;
+              if (userCtx.gender === "female") {
+                  eGender = 1;
+              }
+              if (userCtx.HMO === "klalit") {
+               eHmo=1
+              }
+              else if (userCtx.HMO === "leumi") {
+                eHmo=2
+      
+              }
+              else if (userCtx.HMO === "meuchedet") {
+                eHmo=3
+      
+              }
+              {console.log(userCtx)}
+              {console.log(userCtx.childArr)}
+          axios
+            .post("https://localhost:44381/api/User", {
+            
+            tz: userCtx.tz,
+            firstName: userCtx.firstName,
+            lastName: userCtx.lastName,
+            dateOfBirth: userCtx.birthday,
+            gender: eGender,
+            hmo: eHmo
+             
+            })
+            .then(async result => {
+              await axios.get("https://localhost:44381/api/User")
+              .then(
+            async result => {
+              id = result.data[result.data.length - 1].id;
+              console.log(result)
+            })
+          })
+          .then(async result => {
+            userCtx.ChildForm.forEach(element => {
+              
+                axios.post("https://localhost:44381/api/Child", { tz: element.id, name: element.name, dateOfBirth:element.date , userId:5 })
+            });
+             })
+    
+    // axios.post("https://localhost:44381/api/User", objUser).then(res => {
+    //   console.log(res.data);
+    //   setIsComplete(true)
+    // }
+    // ).catch(e => {
+    //   console.log(e)
+    // })
+    // axios.get("https://localhost:44381/api/User").then(
+    //   (res) => {
+    //     id = res.data[res.data.length - 1].id;
+    //     console.log(res)
+    //   })
+    //   userCtx.ChildForm.map((child) => {
+    //      axios.post("https://localhost:44381/api/Child").then(res=>
+    //       console.log(res.data))
+    //    }
+    //   )
+
+    //   // }
+    //   .catch((e) => { console.log('eroer', e) })
   }
+  
   return (
     <>
       {/* console.log({userCtx}) */}
@@ -134,3 +184,4 @@ export default function MyForm() {
     </>
   );
 }
+
